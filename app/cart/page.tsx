@@ -57,7 +57,7 @@ export default function CartPage() {
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-4">
-          {items.map((item) => {
+          {items.map((item: CartItem) => {
             const imageUrl = item.product.metadata.product_images?.[0]?.imgix_url || item.product.thumbnail
 
             return (

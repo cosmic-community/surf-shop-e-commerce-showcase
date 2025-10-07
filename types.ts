@@ -72,3 +72,21 @@ export function isCollection(obj: CosmicObject): obj is Collection {
 export function isReview(obj: CosmicObject): obj is Review {
   return obj.type === 'reviews';
 }
+
+// Cart types
+export interface CartItem {
+  product: Product;
+  quantity: number;
+  selectedSize?: string;
+  selectedColor?: string;
+}
+
+export interface CartContextType {
+  items: CartItem[];
+  addItem: (product: Product, size?: string, color?: string) => void;
+  removeItem: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;
+  totalItems: number;
+  totalPrice: number;
+}
