@@ -25,11 +25,12 @@ export default function RootLayout({
         <script src="/dashboard-console-capture.js"></script>
       </head>
         <body className={inter.className}>
-          <CartProvider>
-            <Navigation />
-            <main className="min-h-screen">
-              {children}
-            </main>
+            <CartProvider>
+              <Navigation />
+              <main className="min-h-screen">
+                {children}
+              </main>
+            </CartProvider>
         <footer className="bg-secondary-900 text-white py-12 mt-20">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8">
