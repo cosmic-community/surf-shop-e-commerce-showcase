@@ -1,9 +1,8 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { getCurrentUser } from '@/lib/auth'
-import { cosmic } from '@/lib/cosmic'
-import { User } from '@/types'
+import { getUserById } from '@/lib/cosmic'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const currentUser = await getCurrentUser()
 
@@ -14,29 +13,30 @@ export async function GET() {
       )
     }
 
-    // Fetch full user details
-    const response = await cosmic.objects
-      .findOne({
-        type: 'users',
-        id: currentUser.userId
-      })
-      .props(['id', 'metadata'])
-      .depth(0)
+    // Fetch fresh user data from Cosmic
+    const user = await getUserById(currentUser.userId)
 
-    const user = response.object as User
+    if (!user) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      )
+    }
 
     return NextResponse.json({
       user: {
         id: user.id,
         email: user.metadata.email,
         first_name: user.metadata.first_name,
-        last_name: user.metadata.last_name
+        last_name: user.metadata.last_name,
+        phone: user.metadata.phone,
+        shipping_address: user.metadata.shipping_address
       }
     })
   } catch (error) {
-    console.error('Auth check error:', error)
+    console.error('User fetch error:', error)
     return NextResponse.json(
-      { error: 'Authentication check failed' },
+      { error: 'Failed to fetch user' },
       { status: 500 }
     )
   }

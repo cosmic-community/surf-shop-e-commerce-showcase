@@ -169,6 +169,25 @@ export async function getUserByEmail(email: string): Promise<User | null> {
   }
 }
 
+export async function getUserById(userId: string): Promise<User | null> {
+  try {
+    const response = await cosmic.objects
+      .findOne({
+        type: 'users',
+        id: userId
+      })
+      .props(['id', 'title', 'slug', 'metadata'])
+      .depth(0);
+    
+    return response.object as User;
+  } catch (error) {
+    if (hasStatus(error) && error.status === 404) {
+      return null;
+    }
+    throw new Error('Failed to fetch user');
+  }
+}
+
 export async function createUser(email: string, passwordHash: string, firstName?: string, lastName?: string): Promise<User> {
   try {
     const response = await cosmicWrite.objects.insertOne({

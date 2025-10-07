@@ -28,8 +28,36 @@ export default function ProfilePage() {
   useEffect(() => {
     if (!authLoading && !user) {
       router.push('/login?redirect=/account/profile')
+      return
+    }
+
+    if (user) {
+      fetchProfile()
     }
   }, [user, authLoading, router])
+
+  const fetchProfile = async () => {
+    try {
+      const response = await fetch('/api/auth/me')
+      if (response.ok) {
+        const data = await response.json()
+        setFormData({
+          first_name: data.user.first_name || '',
+          last_name: data.user.last_name || '',
+          phone: data.user.phone || '',
+          shipping_address: {
+            street: data.user.shipping_address?.street || '',
+            city: data.user.shipping_address?.city || '',
+            state: data.user.shipping_address?.state || '',
+            zip: data.user.shipping_address?.zip || '',
+            country: data.user.shipping_address?.country || ''
+          }
+        })
+      }
+    } catch (error) {
+      console.error('Failed to fetch profile:', error)
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -40,6 +68,8 @@ export default function ProfilePage() {
     try {
       await updateProfile(formData)
       setSuccess(true)
+      // Refresh profile data after successful update
+      await fetchProfile()
       setTimeout(() => setSuccess(false), 3000)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update profile')
