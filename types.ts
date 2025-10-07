@@ -90,3 +90,73 @@ export interface CartContextType {
   totalItems: number;
   totalPrice: number;
 }
+
+// User type with properly typed metadata
+export interface User extends CosmicObject {
+  type: 'users';
+  metadata: {
+    email: string;
+    password_hash: string;
+    first_name?: string;
+    last_name?: string;
+    phone?: string;
+    shipping_address?: {
+      street: string;
+      city: string;
+      state: string;
+      zip: string;
+      country: string;
+    };
+  };
+}
+
+// Order item interface
+export interface OrderItem {
+  product_id: string;
+  product_title: string;
+  quantity: number;
+  price: number;
+  selected_size?: string;
+  selected_color?: string;
+}
+
+// Order type with properly typed metadata
+export interface Order extends CosmicObject {
+  type: 'orders';
+  metadata: {
+    user: User | string;
+    order_items: OrderItem[];
+    total_amount: number;
+    order_status: {
+      key: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+      value: 'Pending' | 'Processing' | 'Shipped' | 'Delivered' | 'Cancelled';
+    };
+    stripe_session_id?: string;
+    shipping_address?: {
+      street: string;
+      city: string;
+      state: string;
+      zip: string;
+      country: string;
+    };
+    tracking_number?: string;
+    order_date: string;
+  };
+}
+
+// Auth context types
+export interface AuthUser {
+  id: string;
+  email: string;
+  first_name?: string;
+  last_name?: string;
+}
+
+export interface AuthContextType {
+  user: AuthUser | null;
+  loading: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, firstName?: string, lastName?: string) => Promise<void>;
+  logout: () => void;
+  updateProfile: (data: Partial<User['metadata']>) => Promise<void>;
+}

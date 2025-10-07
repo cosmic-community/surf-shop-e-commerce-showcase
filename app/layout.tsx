@@ -4,6 +4,7 @@ import './globals.css'
 import Navigation from '@/components/Navigation'
 import CosmicBadge from '@/components/CosmicBadge'
 import { CartProvider } from '@/contexts/CartContext'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,12 +26,15 @@ export default function RootLayout({
         <script src="/dashboard-console-capture.js"></script>
       </head>
         <body className={inter.className}>
-            <CartProvider>
+          <body className={inter.className}>
+            <AuthProvider>
+              <CartProvider>
               <Navigation />
               <main className="min-h-screen">
                 {children}
               </main>
-            </CartProvider>
+              </CartProvider>
+            </AuthProvider>
         <footer className="bg-secondary-900 text-white py-12 mt-20">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8">

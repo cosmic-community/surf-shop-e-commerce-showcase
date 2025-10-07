@@ -3,9 +3,11 @@
 import Link from 'next/link'
 import { ShoppingCart } from 'lucide-react'
 import { useCart } from '@/contexts/CartContext'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function Navigation() {
   const { totalItems } = useCart()
+  const { user } = useAuth()
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-40">
@@ -34,6 +36,22 @@ export default function Navigation() {
             >
               Apparel
             </Link>
+            
+            {user ? (
+              <Link
+                href="/account"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Account
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Login
+              </Link>
+            )}
             
             <Link
               href="/cart"

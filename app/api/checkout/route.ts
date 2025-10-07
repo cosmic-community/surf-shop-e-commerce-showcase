@@ -42,6 +42,16 @@ export async function POST(request: NextRequest) {
       mode: 'payment',
       success_url: `${request.nextUrl.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${request.nextUrl.origin}/cart`,
+      metadata: {
+        items: JSON.stringify(items.map(item => ({
+          product_id: item.product.id,
+          product_title: item.product.title,
+          quantity: item.quantity,
+          price: item.product.metadata.price,
+          selected_size: item.selectedSize,
+          selected_color: item.selectedColor
+        })))
+      }
     })
 
     return NextResponse.json({ url: session.url })
