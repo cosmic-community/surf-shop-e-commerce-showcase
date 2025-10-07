@@ -47,15 +47,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="grid md:grid-cols-2 gap-12">
         {/* Product Images */}
         <div>
-          {product.metadata.product_images && product.metadata.product_images.length > 0 ? (
-            <div className="space-y-4">
-              <img
-                src={`${product.metadata.product_images[0].imgix_url}?w=800&h=800&fit=crop&auto=format,compress`}
-                alt={product.title}
-                className="w-full rounded-lg shadow-lg"
-                width={800}
-                height={800}
-              />
+          {product.metadata.product_images && product.metadata.product_images.length > 0 && product.metadata.product_images[0] ? (
+              <div className="space-y-4">
+                <img
+                  src={`${product.metadata.product_images[0].imgix_url}?w=800&h=800&fit=crop&auto=format,compress`}
+                  alt={product.title}
+                  className="w-full rounded-lg shadow-lg"
+                  width={800}
+                  height={800}
+                />
               {product.metadata.product_images.length > 1 && (
                 <div className="grid grid-cols-3 gap-4">
                   {product.metadata.product_images.slice(1).map((image, index) => (
