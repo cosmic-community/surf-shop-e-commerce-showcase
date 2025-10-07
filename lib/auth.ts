@@ -25,7 +25,21 @@ export async function createToken(payload: Omit<JWTPayload, 'iat' | 'exp'>): Pro
 export async function verifyToken(token: string): Promise<JWTPayload | null> {
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET)
-    return payload as JWTPayload
+    
+    // Validate that payload contains our custom fields
+    if (
+      typeof payload.userId === 'string' && 
+      typeof payload.email === 'string'
+    ) {
+      return {
+        userId: payload.userId,
+        email: payload.email,
+        iat: payload.iat,
+        exp: payload.exp
+      }
+    }
+    
+    return null
   } catch (error) {
     return null
   }
