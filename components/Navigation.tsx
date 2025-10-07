@@ -17,25 +17,31 @@ export default function Navigation() {
             🏄 Surf Shop
           </Link>
           
-          <div className="flex items-center gap-6">
-            <Link
-              href="/"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/collections/surfboards"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Surfboards
-            </Link>
-            <Link
-              href="/collections/apparel"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Apparel
-            </Link>
+            <div className="flex items-center gap-6">
+              <Link
+                href="/"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/collections/surfboards"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Surfboards
+              </Link>
+              <Link
+                href="/collections/apparel"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Apparel
+              </Link>
+              <Link
+                href="/contact"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Contact
+              </Link>
             
             {user ? (
               <Link

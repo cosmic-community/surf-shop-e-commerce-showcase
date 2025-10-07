@@ -159,4 +159,13 @@ export interface AuthContextType {
   register: (email: string, password: string, firstName?: string, lastName?: string) => Promise<void>;
   logout: () => void;
   updateProfile: (data: Partial<User['metadata']>) => Promise<void>;
+  updateProfile: (data: Partial<User['metadata']>) => Promise<void>;
+}
+
+// Contact form types
+export interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
 }
