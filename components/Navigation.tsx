@@ -34,19 +34,24 @@ export default function Navigation() {
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
             >
               Home
-            </Link>
-            <Link
-              href="/collections/surfboards"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Surfboards
-            </Link>
-            <Link
-              href="/collections/apparel"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Apparel
-            </Link>
+              <Link
+                href="/"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/products"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Products
+              </Link>
+              <Link
+                href="/collections/surfboards"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Surfboards
+              </Link>
             <Link
               href="/contact"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
@@ -126,27 +131,28 @@ export default function Navigation() {
         }`}
       >
         <div className="flex flex-col p-6 space-y-4">
-          <Link
-            href="/"
-            onClick={closeMobileMenu}
-            className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
-          >
-            Home
-          </Link>
-          <Link
-            href="/collections/surfboards"
-            onClick={closeMobileMenu}
-            className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
-          >
-            Surfboards
-          </Link>
-          <Link
-            href="/collections/apparel"
-            onClick={closeMobileMenu}
-            className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
-          >
-            Apparel
-          </Link>
+          <div className="flex flex-col p-6 space-y-4">
+            <Link
+              href="/"
+              onClick={closeMobileMenu}
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
+            >
+              Home
+            </Link>
+            <Link
+              href="/products"
+              onClick={closeMobileMenu}
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
+            >
+              Products
+            </Link>
+            <Link
+              href="/collections/surfboards"
+              onClick={closeMobileMenu}
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
+            >
+              Surfboards
+            </Link>
           <Link
             href="/contact"
             onClick={closeMobileMenu}
