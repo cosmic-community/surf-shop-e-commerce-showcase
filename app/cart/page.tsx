@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { Trash2, Plus, Minus } from 'lucide-react'
 import { useState } from 'react'
 
+// Note: Metadata cannot be exported from client components
+// SEO handled by parent layout
+
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalPrice, clearCart } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)

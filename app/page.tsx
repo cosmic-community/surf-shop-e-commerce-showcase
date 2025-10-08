@@ -3,7 +3,24 @@ import ProductGrid from '@/components/ProductGrid'
 import CollectionGrid from '@/components/CollectionGrid'
 import ReviewCard from '@/components/ReviewCard'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Shop premium surfboards, wetsuits, and surf gear. Browse our featured products and collections. Read authentic customer reviews from fellow surfers.',
+  openGraph: {
+    title: 'Surf Shop - Premium Surf Gear & Apparel',
+    description: 'Shop premium surfboards, wetsuits, and surf gear. Browse our featured products and collections.',
+    images: [
+      {
+        url: 'https://imgix.cosmicjs.com/2a074950-a3a4-11f0-962f-a5a34af2c54a-photo-1559827260-dc66d52bef19-1759858591470.jpg?w=1200&h=630&fit=crop&auto=format,compress',
+        width: 1200,
+        height: 630,
+        alt: 'Surf Shop - Featured Surfboards and Gear'
+      }
+    ]
+  }
+}
 export default async function HomePage() {
   const [products, collections, reviews] = await Promise.all([
     getProducts(),

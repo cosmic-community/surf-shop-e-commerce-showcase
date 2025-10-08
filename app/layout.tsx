@@ -9,8 +9,31 @@ import { AuthProvider } from '@/contexts/AuthContext'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Surf Shop - Premium Surf Gear & Apparel',
+  title: {
+    default: 'Surf Shop - Premium Surf Gear & Apparel',
+    template: '%s | Surf Shop'
+  },
   description: 'High-quality surfboards, wetsuits, and surf gear for all skill levels. Shop our curated collections and read authentic customer reviews.',
+  openGraph: {
+    title: 'Surf Shop - Premium Surf Gear & Apparel',
+    description: 'High-quality surfboards, wetsuits, and surf gear for all skill levels. Shop our curated collections and read authentic customer reviews.',
+    images: [
+      {
+        url: 'https://imgix.cosmicjs.com/2a074950-a3a4-11f0-962f-a5a34af2c54a-photo-1559827260-dc66d52bef19-1759858591470.jpg?w=1200&h=630&fit=crop&auto=format,compress',
+        width: 1200,
+        height: 630,
+        alt: 'Surf Shop - Premium Surfboards and Gear'
+      }
+    ],
+    type: 'website',
+    siteName: 'Surf Shop'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Surf Shop - Premium Surf Gear & Apparel',
+    description: 'High-quality surfboards, wetsuits, and surf gear for all skill levels.',
+    images: ['https://imgix.cosmicjs.com/2a074950-a3a4-11f0-962f-a5a34af2c54a-photo-1559827260-dc66d52bef19-1759858591470.jpg?w=1200&h=630&fit=crop&auto=format,compress']
+  },
   icons: {
     icon: [
       {

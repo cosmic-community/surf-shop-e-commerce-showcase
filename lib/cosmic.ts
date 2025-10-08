@@ -11,6 +11,7 @@ function hasStatus(error: unknown): error is { status: number } {
 }
 
 // Helper functions for fetching data
+// Helper functions for fetching data
 import { Product, Collection, Review, CosmicResponse } from '@/types'
 
 export async function getProducts(): Promise<Product[]> {
