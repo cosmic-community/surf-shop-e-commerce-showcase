@@ -6,6 +6,9 @@ import { useAuth } from '@/contexts/AuthContext'
 import Link from 'next/link'
 import { Package, User, LogOut, Loader2 } from 'lucide-react'
 
+// Note: Metadata cannot be exported from client components
+// SEO handled by parent layout
+
 export default function AccountPage() {
   const router = useRouter()
   const { user, loading, logout } = useAuth()

@@ -2,6 +2,10 @@
 
 import { useState } from 'react'
 import { Mail, Phone, MapPin } from 'lucide-react'
+import type { Metadata } from 'next'
+
+// Note: Metadata cannot be exported from client components
+// However, we'll add metadata via a server component wrapper in production
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

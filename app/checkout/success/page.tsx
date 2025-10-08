@@ -7,6 +7,9 @@ import { CheckCircle, Loader2 } from 'lucide-react'
 import { useCart } from '@/contexts/CartContext'
 import { useAuth } from '@/contexts/AuthContext'
 
+// Note: Metadata cannot be exported from client components
+// SEO handled by parent layout
+
 export default function CheckoutSuccessPage() {
   const searchParams = useSearchParams()
   const router = useRouter()

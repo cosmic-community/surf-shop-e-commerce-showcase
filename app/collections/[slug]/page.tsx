@@ -1,11 +1,49 @@
-// app/collections/[slug]/page.tsx
-import { getCollection, getProductsByCollection } from '@/lib/cosmic'
+import { getCollection, getProductsByCollection, getCollections } from '@/lib/cosmic'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import ProductGrid from '@/components/ProductGrid'
+import type { Metadata } from 'next'
 
 interface CollectionPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: CollectionPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const collection = await getCollection(slug)
+
+  if (!collection) {
+    return {
+      title: 'Collection Not Found'
+    }
+  }
+
+  const imageUrl = collection.metadata.hero_image?.imgix_url
+  const ogImage = imageUrl ? `${imageUrl}?w=1200&h=630&fit=crop&auto=format,compress` : undefined
+
+  return {
+    title: collection.title,
+    description: collection.metadata.description || `Shop ${collection.title} collection at Surf Shop. Premium surf gear and apparel.`,
+    openGraph: {
+      title: `${collection.title} - Surf Shop`,
+      description: collection.metadata.description || `Shop ${collection.title} collection.`,
+      images: ogImage ? [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: collection.title
+        }
+      ] : []
+    }
+  }
+}
+
+export async function generateStaticParams() {
+  const collections = await getCollections()
+  return collections.map((collection) => ({
+    slug: collection.slug,
+  }))
 }
 
 export default async function CollectionPage({ params }: CollectionPageProps) {

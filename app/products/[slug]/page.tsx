@@ -1,13 +1,51 @@
-// app/products/[slug]/page.tsx
-import { getProduct, getReviewsForProduct } from '@/lib/cosmic'
+import { getProduct, getReviewsForProduct, getProducts } from '@/lib/cosmic'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import ReviewCard from '@/components/ReviewCard'
 import AddToCartButton from '@/components/AddToCartButton'
 import { Collection } from '@/types'
+import type { Metadata } from 'next'
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const product = await getProduct(slug)
+
+  if (!product) {
+    return {
+      title: 'Product Not Found'
+    }
+  }
+
+  const imageUrl = product.metadata.product_images?.[0]?.imgix_url || product.thumbnail
+  const ogImage = imageUrl ? `${imageUrl}?w=1200&h=630&fit=crop&auto=format,compress` : undefined
+
+  return {
+    title: product.title,
+    description: product.metadata.description || `Shop ${product.title} at Surf Shop. Premium surf gear with authentic customer reviews.`,
+    openGraph: {
+      title: `${product.title} - Surf Shop`,
+      description: product.metadata.description || `Shop ${product.title} at Surf Shop.`,
+      images: ogImage ? [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: product.title
+        }
+      ] : []
+    }
+  }
+}
+
+export async function generateStaticParams() {
+  const products = await getProducts()
+  return products.map((product) => ({
+    slug: product.slug,
+  }))
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {

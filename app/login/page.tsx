@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
 import { Loader2 } from 'lucide-react'
 
+// Note: Metadata cannot be exported from client components
+// SEO handled by parent layout
+
 export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
