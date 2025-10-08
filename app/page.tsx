@@ -23,9 +23,8 @@ export default async function HomePage() {
             <img 
               src="https://imgix.cosmicjs.com/2a074950-a3a4-11f0-962f-a5a34af2c54a-photo-1559827260-dc66d52bef19-1759858591470.jpg?w=2000&h=1200&fit=crop&auto=format,compress" 
               alt="Surfing background"
-            alt="Surfing background" 
-            className="w-full h-full object-cover opacity-40"
-          />
+              className="w-full h-full object-cover opacity-40"
+            />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-500/80 to-secondary-700/80"></div>
         </div>
         
