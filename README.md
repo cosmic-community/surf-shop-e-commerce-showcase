@@ -15,9 +15,7 @@ A modern, responsive e-commerce surf shop application built with Next.js 15 and 
 - 🔍 **Collection Showcases** - Dedicated pages for each product collection
 - 💪 **TypeScript** - Full type safety with comprehensive type definitions
 
-## Clone this Project
-
-## Clone this Project
+## 🚀 Quick Start with Clone
 
 Want to create your own version of this project with all the content and structure? Clone this Cosmic bucket and code repository to get started instantly:
 
@@ -70,15 +68,7 @@ bun install
 
 3. **Set up environment variables**
 
-Create a `.env.local` file in the root directory:
-
-```env
-COSMIC_BUCKET_SLUG=your-bucket-slug
-COSMIC_READ_KEY=your-read-key
-```
-
-Replace the values with your actual Cosmic bucket credentials.
-
+Create a `.env.local` file in the root directory with the following variables:
 4. **Run the development server**
 ```bash
 bun run dev
@@ -164,7 +154,10 @@ This application uses the following Cosmic object types:
 3. Add environment variables in Vercel dashboard:
    - `COSMIC_BUCKET_SLUG`
    - `COSMIC_READ_KEY`
-4. Deploy!
+   - `COSMIC_WRITE_KEY`
+   - `JWT_SECRET`
+   - `STRIPE_SECRET_KEY`
+   - `RESEND_API_KEY`
 
 ### Deploy to Netlify
 
