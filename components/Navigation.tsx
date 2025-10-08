@@ -27,62 +27,61 @@ export default function Navigation() {
             🏄 Surf Shop
           </Link>
           
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link
-              href="/"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/collections/surfboards"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Surfboards
-            </Link>
-            <Link
-              href="/collections/apparel"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Apparel
-            </Link>
-            <Link
-              href="/contact"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Contact
-            </Link>
-          
-            {user ? (
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-6">
               <Link
-                href="/account"
+                href="/"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
               >
-                Account
+                Home
               </Link>
-            ) : (
               <Link
-                href="/login"
+                href="/products"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
               >
-                Login
+                Products
               </Link>
-            )}
+              <Link
+                href="/collections/surfboards"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Surfboards
+              </Link>
+              <Link
+                href="/contact"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              >
+                Contact
+              </Link>
             
-            <Link
-              href="/cart"
-              className="relative text-gray-700 hover:text-primary-600 transition-colors"
-            >
-              <ShoppingCart className="w-6 h-6" />
-              {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                  {totalItems}
-                </span>
+              {user ? (
+                <Link
+                  href="/account"
+                  className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+                >
+                  Account
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+                >
+                  Login
+                </Link>
               )}
-            </Link>
-          </div>
-
+              
+              <Link
+                href="/cart"
+                className="relative text-gray-700 hover:text-primary-600 transition-colors"
+              >
+                <ShoppingCart className="w-6 h-6" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
+              </Link>
+            </div>
           {/* Mobile Navigation Controls */}
           <div className="flex md:hidden items-center gap-4">
             <Link
@@ -119,63 +118,63 @@ export default function Navigation() {
         />
       )}
 
-      {/* Mobile Menu Drawer */}
-      <div
-        className={`fixed top-16 right-0 bottom-0 w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex flex-col p-6 space-y-4">
-          <Link
-            href="/"
-            onClick={closeMobileMenu}
-            className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
-          >
-            Home
-          </Link>
-          <Link
-            href="/collections/surfboards"
-            onClick={closeMobileMenu}
-            className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
-          >
-            Surfboards
-          </Link>
-          <Link
-            href="/collections/apparel"
-            onClick={closeMobileMenu}
-            className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
-          >
-            Apparel
-          </Link>
-          <Link
-            href="/contact"
-            onClick={closeMobileMenu}
-            className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
-          >
-            Contact
-          </Link>
-          
-          <div className="border-t border-gray-200 pt-4">
-            {user ? (
-              <Link
-                href="/account"
-                onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2 block"
-              >
-                Account
-              </Link>
-            ) : (
-              <Link
-                href="/login"
-                onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2 block"
-              >
-                Login
-              </Link>
-            )}
+        {/* Mobile Menu Drawer */}
+        <div
+          className={`fixed top-16 right-0 bottom-0 w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex flex-col p-6 space-y-4">
+            <Link
+              href="/"
+              onClick={closeMobileMenu}
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
+            >
+              Home
+            </Link>
+            <Link
+              href="/products"
+              onClick={closeMobileMenu}
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
+            >
+              Products
+            </Link>
+            <Link
+              href="/collections/surfboards"
+              onClick={closeMobileMenu}
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
+            >
+              Surfboards
+            </Link>
+            <Link
+              href="/contact"
+              onClick={closeMobileMenu}
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
+            >
+              Contact
+            </Link>
+            
+            <div className="border-t border-gray-200 pt-4">
+              {user ? (
+                <Link
+                  href="/account"
+                  onClick={closeMobileMenu}
+                  className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2 block"
+                >
+                  Account
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  onClick={closeMobileMenu}
+                  className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2 block"
+                >
+                  Login
+                </Link>
+              )}
+            </div>
           </div>
         </div>
-      </div>
     </nav>
   )
 }
