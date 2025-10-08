@@ -17,17 +17,28 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-500 to-secondary-700 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+      <section className="relative bg-gradient-to-r from-primary-500 to-secondary-700 text-white py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=2000&h=1200&fit=crop&auto=format,compress" 
+            alt="Surfing background" 
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-500/80 to-secondary-700/80"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">
             Ride the Wave
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto drop-shadow-md">
             Premium surf gear and apparel for surfers of all levels. Quality you can trust, waves you'll love.
           </p>
           <Link
             href="#products"
-            className="inline-block bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
           >
             Shop Now
           </Link>
